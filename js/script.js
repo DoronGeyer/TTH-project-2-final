@@ -44,12 +44,12 @@ const appendSearchBar = ()=>{
         let ul =document.querySelector("ul.student-list");
         searchNames(searchInput.value,listAll);
       }else if (searchInput.value.length==0) {
-          searchInput.style.backgroundColor= "#FF796B";
+          searchInput.style.backgroundColor= "#FFB3AE";
           searchInput.placeholder = "Enter a valid Search";
           setTimeout(()=>{
             searchInput.style.backgroundColor= ""
-            searchInput.placeholder = "Search for students..."              
-        },2000);
+            searchInput.placeholder = "Search for students..."
+        },1500);
       }
 
     });
