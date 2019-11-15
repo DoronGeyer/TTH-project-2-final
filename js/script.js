@@ -38,6 +38,8 @@ const appendSearchBar = ()=>{
 // adding key up and on click event listeners to the button and search input.
 // The search button is disabled if there isnt anything in the inputbox.
 // if the user deletes all characters from the input it reverts to default page.
+// I made the background color change if the text field is blank as well as the message when clicked, then reverted it back after 1.5 seconds.
+// to provide visual feedback that there needs to be input in order to search.
     searchButton.addEventListener("click",(e)=>{
       paginationDiv.innerHTML="";
       if(e.target.tagName="BUTTON" && searchInput.value.length>0){
