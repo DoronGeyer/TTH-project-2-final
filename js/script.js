@@ -10,7 +10,7 @@ const listAll = document.querySelectorAll("ul li.student-item");
 let page = 0;
 
 /***********************************************
-DOM element Creation Pagination Div and Search.
+DOM element Creation, Pagination Div and Search.
 ************************************************/
 
 // this function removes redundancy in creating elements.
@@ -26,28 +26,36 @@ const appendSearchBar = ()=>{
   let pageHeaderDiv= document.querySelector("div.page-header");
   let searchDiv= createElementFunc("div","className","student-search");
   let searchButton= createElementFunc("button","textContent","Search");
+      searchButton.id="searchButton";
   let searchInput = createElementFunc("input","type","text");
       searchInput.id="searchInput";
       searchInput.placeholder= "Search for students...";
-
 
           searchDiv.appendChild(searchInput);
           searchDiv.appendChild(searchButton);
           pageHeaderDiv.appendChild(searchDiv);
 
 // adding key up and on click event listeners to the button and search input.
-
+// The search button is disabled if there isnt anything in the inputbox.
+// if the user deletes all characters from the input it reverts to default page.
     searchButton.addEventListener("click",(e)=>{
       paginationDiv.innerHTML="";
-      if(e.target.tagName="BUTTON"){
+      if(e.target.tagName="BUTTON" && searchInput.value.length>0){
         let ul =document.querySelector("ul.student-list");
         searchNames(searchInput.value,listAll);
         }
+
     });
     searchInput.addEventListener("keyup",(e)=>{
       if(e.target.tagName="INPUT"){
       paginationDiv.innerHTML="";
         searchNames(searchInput.value,listAll);
+      }
+      if(searchInput.value==""){
+        let headingText= document.querySelector("div.page-header h2");
+        headingText.textContent="STUDENTS";
+        showPage(listAll,0);
+
       }
     });
     let paginationDiv= createElementFunc("div","className","pagination");
@@ -121,7 +129,7 @@ function searchNames(inputSearch,list){
               if(inputSearch.length != 0 &&  list[i].textContent.toLowerCase().includes(inputSearch.toLowerCase() )){
                 list[i].style.display="";
                 resultsList.push(list[i]);
-      }
+          }
     }
     if(resultsList.length==0){
       headingText.textContent="No Results Found";
