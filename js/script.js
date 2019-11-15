@@ -43,7 +43,14 @@ const appendSearchBar = ()=>{
       if(e.target.tagName="BUTTON" && searchInput.value.length>0){
         let ul =document.querySelector("ul.student-list");
         searchNames(searchInput.value,listAll);
-        }
+      }else if (searchInput.value.length==0) {
+          searchInput.style.backgroundColor= "#FF796B";
+          searchInput.placeholder = "Enter a valid Search";
+          setTimeout(()=>{
+            searchInput.style.backgroundColor= ""
+            searchInput.placeholder = "Search for students..."              
+        },2000);
+      }
 
     });
     searchInput.addEventListener("keyup",(e)=>{
