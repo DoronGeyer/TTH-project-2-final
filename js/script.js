@@ -6,7 +6,8 @@ FSJS project 2 - List Filter and Pagination
 /******************************************
   Global variable declaration.
 *****************************************/
-const listAll = document.querySelectorAll("ul li.student-item");
+const listAll = document.querySelectorAll("ul li.student-item ");
+const searchList= document.querySelectorAll("div.student-details h3");
 let page = 0;
 
 /***********************************************
@@ -62,6 +63,7 @@ const appendSearchBar = ()=>{
         let headingText= document.querySelector("div.page-header h2");
         headingText.textContent="STUDENTS";
         showPage(listAll,0);
+        appendPageLinks(listAll);
 
       }
     });
@@ -133,7 +135,7 @@ function searchNames(inputSearch,list){
   const resultsList=[];
         for (var i = 0; i < list.length; i++) {
             list[i].style.display="none";
-              if(inputSearch.length != 0 &&  list[i].textContent.toLowerCase().includes(inputSearch.toLowerCase() )){
+              if(inputSearch.length != 0 &&  searchList[i].textContent.toLowerCase().includes(inputSearch.toLowerCase() )){
                 list[i].style.display="";
                 resultsList.push(list[i]);
           }
