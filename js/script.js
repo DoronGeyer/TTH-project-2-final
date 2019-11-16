@@ -7,7 +7,6 @@ FSJS project 2 - List Filter and Pagination
   Global variable declaration.
 *****************************************/
 const listAll = document.querySelectorAll("ul li.student-item ");
-const searchList= document.querySelectorAll("div.student-details h3");
 let page = 0;
 
 /***********************************************
@@ -133,6 +132,7 @@ const appendPageLinks = (list)=>{
 // the heading is reset each time the button is clicked and the condition is checked again
 function searchNames(inputSearch,list){
   const headingText= document.querySelector("div.page-header h2");
+  const searchList= document.querySelectorAll("div.student-details h3");
         headingText.textContent = "STUDENTS";
   const resultsList=[];
         for (var i = 0; i < list.length; i++) {
