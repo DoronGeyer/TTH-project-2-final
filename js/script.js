@@ -56,6 +56,7 @@ const appendSearchBar = ()=>{
 
     });
     searchInput.addEventListener("keyup",(e)=>{
+      page=0;
       if(e.target.tagName="INPUT"){
       paginationDiv.innerHTML="";
         searchNames(searchInput.value,listAll);
